@@ -4,6 +4,6 @@
         android:id="@+id/action_remove_month"
         android:title=""
         app:showAsAction="always"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@mipmap/ic_remove"
         />
 </menu>

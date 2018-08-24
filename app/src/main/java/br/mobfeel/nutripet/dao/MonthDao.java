@@ -10,4 +10,5 @@ public interface MonthDao {
     public void update(Month month);
     public List<Month> listAll();
     public List<Month> findByDogId(int id);
+    public void deleteByDogId(int id);
 }

@@ -26,7 +26,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/anm_tv_wheight" />
@@ -53,7 +53,9 @@
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ann_et_wheight" />
+        app:layout_constraintTop_toBottomOf="@+id/ann_et_wheight"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/cardview_light_background"/>
 
     <Spinner
         android:id="@+id/anm_sp_month"

@@ -16,10 +16,12 @@ import br.mobfeel.nutripet.model.Dog;
 public class DogDaoBd implements DogDao{
 
     private DataBaseOpenHelper bdOpenHelper;
+    private Context context;
     private static String TABLE = "dog";
 
     public DogDaoBd(Context context) {
         this.bdOpenHelper = new DataBaseOpenHelper(context);
+        this.context = context;
     }
 
     @Override
@@ -29,6 +31,7 @@ public class DogDaoBd implements DogDao{
         ContentValues values = new ContentValues();
         values.put("name", dog.getName());
         values.put("race", dog.getRace());
+        values.put("image_id", dog.getImageId());
         base.insert(DogDaoBd.TABLE, null, values);
         base.close();
     }
@@ -36,6 +39,9 @@ public class DogDaoBd implements DogDao{
     @Override
     public void delete(Dog dog) {
         SQLiteDatabase base = bdOpenHelper.getWritableDatabase();
+        MonthDaoBd monthDaoBd = new MonthDaoBd(this.context);
+        monthDaoBd.deleteByDogId(dog.getId());
+
         base.delete(DogDaoBd.TABLE, "dog_id=?",
                 new String []{String.valueOf(dog.getId())});
         base.close();
@@ -50,22 +56,21 @@ public class DogDaoBd implements DogDao{
         base.update(DogDaoBd.TABLE, values, "dog_id=?",
                 new String[] {String.valueOf(dog.getId())});
         base.close();
-
-        Log.d("EditDog", Integer.toString(dog.getId()));
     }
 
     @Override
     public List<Dog> listAll() {
         SQLiteDatabase base = bdOpenHelper.getReadableDatabase();
         Cursor cursor = base.query(DogDaoBd.TABLE,
-                new String[] {"dog_id", "name", "race"},
+                new String[] {"dog_id", "name", "race", "image_id"},
                 null, null, null, null, "name");
         List<Dog> dogList = new ArrayList<>();
         while(cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndex("dog_id"));
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String race = cursor.getString(cursor.getColumnIndex("race"));
-            Dog dog = new Dog(id, name, race, 10);
+            int imageId = cursor.getInt(cursor.getColumnIndex("image_id"));
+            Dog dog = new Dog(id, name, race, imageId);
             dogList.add(dog);
         }
         base.close();

@@ -11,7 +11,7 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
             "(dog_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "name VARCHAR(30)," +
             "race varchar(30)," +
-            "image_path VARCHAR(100))";
+            "image_id INTEGER)";
     private  static  String createTableMonth = "CREATE TABLE month" +
             "(month_id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "month INTEGER NOT NULL," +

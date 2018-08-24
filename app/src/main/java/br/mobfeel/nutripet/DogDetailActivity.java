@@ -74,6 +74,7 @@ public class DogDetailActivity extends AppCompatActivity implements DetailAdapte
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
 
+
     }
 
     @Override

@@ -46,15 +46,17 @@ public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final DogAdapter.ViewHolder holder, final int position) {
-        holder.imgProfile.setImageResource(R.drawable.ic_launcher_background); //@todo
-        holder.lblRace.setText(this.dogList.get(position).getRace());
-        holder.lblName.setText(this.dogList.get(position).getName());
+        Dog dog = dogList.get(position);
+        holder.imgProfile.setImageResource(dog.getImageId());
+        holder.lblRace.setText(dog.getRace());
+        holder.lblName.setText(dog.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dogOnClickListener.onClickDog(holder.itemView, position);
             }
         });
+
 
     }
 

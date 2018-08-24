@@ -94,4 +94,12 @@ public class MonthDaoBd implements MonthDao {
 
         return monthList;
     }
+
+    @Override
+    public void deleteByDogId(int id) {
+        SQLiteDatabase base = bdOpenHelper.getWritableDatabase();
+        base.delete(MonthDaoBd.TABLE, "dog_id=?",
+                new String[]{String.valueOf(id)}  );
+        base.close();
+    }
 }

@@ -6,19 +6,19 @@ public class Dog implements Serializable {
 
     private int id;
     private String name, race;
-    private int imageR;
-    private String imagePath;
+    private int imageId;
 
-    public Dog(int id, String name, String race, int imageR) {
+    public Dog(int id, String name, String race, int imageId) {
         this.name = name;
         this.race = race;
-        this.imageR = imageR;
         this.id = id;
+        this.imageId = imageId;
     }
 
-    public Dog(String name, String race) {
+    public Dog(String name, String race, int imageId) {
         this.name = name;
         this.race = race;
+        this.imageId = imageId;
     }
 
     public Dog(int id){
@@ -42,12 +42,12 @@ public class Dog implements Serializable {
         this.race = race;
     }
 
-    public int getImageR() {
-        return imageR;
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setImageR(int imageR) {
-        this.imageR = imageR;
+    public void setImageId(int imageR) {
+        this.imageId = imageR;
     }
 
 
